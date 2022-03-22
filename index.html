@@ -4,9 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
     <title>Forca</title>
 </head>
-<body>
-    <h1>Jogo da Forca</h1>
+<body class="grid">
+    <header> 
+        <h1>Jogo da Forca</h1> 
+    </header>
+   
+    <main>
+        <div class="dados">
+            <div>
+            <label for="">Nome:</label>
+            <input id="nome" type="text">
+            <br>
+            <label for="">Email:</label>
+            <input id="email" type="text">
+            <button onclick="cadastro()">Confirmar</button>
+            </div>
+            <div id="box1">
+                <div><p>Vitórias</p></div>
+                <div><p id="contador">0</p>                </div>
+            </div>
+        </div>
+
+
+        <div class="forca"><img src="Imagens/Vidas/00-vidas.png" alt="vidas na forca"></div>
+
+        <div class="jogo"><p>Jogo</p></div>        
+        <p>sobrou :s</p>
+    </main>
+
+    <footer>
+        <p>copyright</p>
+    </footer>
 </body>
+
+    <script src="forca.js"></script>
 </html>

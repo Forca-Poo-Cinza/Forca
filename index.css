@@ -1,0 +1,75 @@
+* {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;   
+    background-color: gray;
+}
+
+.grid{
+    display: grid;
+    grid-template-rows: 40px 1fr 30px;
+    grid-template-columns: 1fr;
+}
+
+header {
+    background-color: red;
+    grid-column: span 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    background-color: orange; 
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 20% 1fr;
+    grid-template-rows: 60px 1fr 30%;
+}
+
+div.dados {
+    background-color: purple;
+    grid-column: span 2;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+div.dados input {
+    margin: 2px;
+}
+
+div.dados #box1 {
+    background-color: red;
+    width: 70px;
+    display: flex;
+    justify-content: space-between;
+}
+
+div.forca {
+    background-color: #008000;
+    display: flex;
+}
+
+div.forca img{
+    width: 100%;
+    height: 100%;
+}
+
+div.jogo {
+    background-color: pink;
+}
+
+
+
+footer {
+    background-color: blue;
+    grid-row: 3 / 4;
+    grid-column: span 2;
+}
