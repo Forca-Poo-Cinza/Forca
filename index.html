@@ -23,20 +23,31 @@
             <button onclick="cadastro()">Confirmar</button>
             </div>
             <div id="box1">
-                <div><p>Vitórias</p></div>
-                <div><p id="contador">0</p>                </div>
+                <div><p>Vitórias: <span id="contador">0</span></p></div>
             </div>
         </div>
 
+        <div class="img"><img id="forca" src="Imagens/Vidas/00-vidas.png" alt="vidas na forca"></div>
 
-        <div class="forca"><img src="Imagens/Vidas/00-vidas.png" alt="vidas na forca"></div>
-
-        <div class="jogo"><p>Jogo</p></div>        
-        <p>sobrou :s</p>
+        <div class="jogo">
+            <div>
+                <p id="array_lenght">_ _ _ _ _ _ _ _ _</p>
+            </div>
+            <div>
+                <label for="">Digite uma Letra:</label>
+                <input id="nome" type="text">
+                <button onclick="Validar()">Confirmar</button>
+            </div>    
+        </div>  
+        <div class="corpo">
+        <p>Lista de palavras feitas?</p> 
+        <p>Dicas? (sobre qual tema dentre os 3)</p>
+        </div>
     </main>
 
     <footer>
-        <p>copyright</p>
+        <p>Copyright Grupo Cinza</p>
+        <p>Desenvolvido por: Mateus Powell</p>
     </footer>
 </body>
 
