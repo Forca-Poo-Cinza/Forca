@@ -5,8 +5,99 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forca</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Jogo da Forca</h1>
+
+    <header>
+    <div class="Nome">
+        <label for="">Nome:</label>
+            <input id="usuario" type="text">
+            <br>
+            <br>
+            <label for="">Email:</label>
+            <input id="email" type="text">
+            <button onclick="cadastrar()">Confirmar</button>
+
+    </div>
+
+
+    <div class="Vitoria">
+        <p>Vitória:</p>
+        <p>Derrota:</p>
+    </div>
+
+    
+
+    </header>
+
+    <main>
+
+        <img src="Imagens/01.png" alt="" id="trocarimg">
+
+    </main>
+
+    <span>
+        <div class="traco">
+
+            <p id="secreto"></p>
+        </div>
+
+        <div class="categoria">
+            <label>Dica: </label>
+            <input type="text" id="categoria"></input>
+            <br>
+            <br>
+            <label>Palavra secreta: </label>
+            <input type="text" id=""></input>
+        </div>
+        
+
+        <div class="palavra">
+            <label for=""> Errado:</label>
+            <input id="errado"></input>
+
+
+        </div>
+    </span>
+
+    <footer>
+        <p>
+        <button value="Q" onclick="letra01('Q')">Q</button>
+        <button value="W" onclick="letra01('W')">W</button>
+        <button value="E" onclick="letra01('E')">E</button>
+        <button value="R" onclick="letra01('R')">R</button>
+        <button  value="T" onclick="letra01('T')">T</button>
+        <button  value="Y" onclick="letra01('Y')">Y</button>
+        <button value="U" onclick="letra01('U')">U</button>
+        <button value="I" onclick="letra01('I')">I</button>
+        <button value="O" onclick="letra01('O')">O</button>
+        <button value="P" onclick="letra01('P')">P</button>
+    </p>
+    <p><button value="A" onclick="letra01('A')">A</button>
+        <button value="S" onclick="letra01('S')">S</button>
+        <button value="D" onclick="letra01('D')">D</button>
+        <button value="F" onclick="letra01('F')">F</button>
+        <button value="G" onclick="letra01('G')">G</button>
+        <button value="H" onclick="letra01('H')">H</button>
+        <button value="J" onclick="letra01('J')">J</button>
+        <button value="K" onclick="letra01('K')">K</button>
+        <button value="L" onclick="letra01('L')">L</button>
+        <button value="Ç" onclick="letra01('Ç')">Ç</button>
+    </p>
+    <p>
+        <button value="Z" onclick="letra01('Z')">Z</button>
+        <button value="X" onclick="letra01('X')">X</button>
+        <button value="C" onclick="letra01('C')">C</button>
+        <button value="V" onclick="letra01('V')">V</button>
+        <button value="B" onclick="letra01('B')">B</button>
+        <button value="N" onclick="letra01('N')">N</button>
+        <button value="M" onclick="letra01('M')">M</button>
+    </p>
+    </footer>
+
+
+    
+    <script src="script.js"></script>
 </body>
 </html>
