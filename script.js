@@ -6,6 +6,7 @@ let chance = 6;
 
 function cadastrar() {
     // entrada:
+    
     const usuario = document.getElementById("usuario");
     const email = document.getElementById("email");    
 
@@ -72,6 +73,9 @@ let alfabeto = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P",
 
 let errado = [];
 
+var num = 1;
+var img = document.getElementById("trocarimg");
+
 function letra01(letra1){
     console.log(letra1);
     let acerto = false;
@@ -94,6 +98,26 @@ function letra01(letra1){
         document.getElementById("errado").value = errado;
         chance -= 1;
     }
+
+    if (chance!=6){
+        if (chance == 5){
+            img.src = "Imagens/02.png";
+        }else if (chance == 4){
+            img.src = "Imagens/03.png";
+        }else if (chance == 3){
+            img.src = "Imagens/04.png";
+        }else if (chance == 2){
+            img.src = "Imagens/05.png";
+        }else if (chance == 1){
+            img.src = "Imagens/06.png";
+        } else {
+            img.src = "Imagens/07.png"
+      }}
+    //garante que num fique alternando entre 1 e 2
+
+
+
+    console.log(chance)
     // document.getElementById("secreto").innerHTML = segredo.join(" ");
 
     // if (acerto == true){
@@ -108,6 +132,10 @@ function letra01(letra1){
     
 
 }
+
+
+
+
 
 // let listaDinamica = [];
 // let palavraSecretaCategoria;
