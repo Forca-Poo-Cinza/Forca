@@ -51,6 +51,14 @@ main{
     
 }
 
+main div {
+    height: 100%;
+}
+
+main div img {
+    height: 100%;
+}
+
 span{
     display: grid;
     grid-row:3/4;
