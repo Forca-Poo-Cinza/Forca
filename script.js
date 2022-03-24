@@ -1,6 +1,6 @@
 const dados01 = [];
 const letraadv01 = [];
-let segredo = "";
+let segredo = [];
 let palavra = "";
 
 
@@ -54,10 +54,12 @@ function cadastrar() {
     console.log(palavra.length)
 
     for (let i = 1; i <= palavra.length; i++){
-        segredo = segredo + " ______ "
+        segredo.push("____")
+
     }
-    console.log(segredo)
-    document.getElementById("secreto").innerHTML = segredo;
+    console.log(segredo.length)
+    document.getElementById("secreto").innerHTML = segredo.join(" ");
+
 
 
 
@@ -76,16 +78,19 @@ function letra01(letra1){
     console.log(letra1)
     for (let j = 0; j < palavra.length; j++){
         if(palavra[j] == letra1){
-            acerto = true;
-            console.log(j)
-            segredo [j] = letra1
-            console.log(segredo)
+            console.log(j);
+            segredo[j] = letra1;
+            console.log(segredo.join(" "))
+            document.getElementById("secreto").innerHTML = segredo.join(" ");
 
+            
 
         }
         
+        
     
     }
+    // document.getElementById("secreto").innerHTML = segredo.join(" ");
 
     // if (acerto == true){
     //     segredo[j] = letra1
@@ -96,7 +101,7 @@ function letra01(letra1){
     //     console.log("Estou na errada")
     // }
 
-    segredo = "";
+    
 
 }
 
