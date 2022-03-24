@@ -71,24 +71,30 @@ function cadastrar() {
     
 };
 let alfabeto = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-let acerto = false;
 
+let errado = [];
 
 function letra01(letra1){
-    console.log(letra1)
+    console.log(letra1);
+    let acerto = false;
     for (let j = 0; j < palavra.length; j++){
+
         if(palavra[j] == letra1){
+            acerto = true;
             console.log(j);
             segredo[j] = letra1;
             console.log(segredo.join(" "))
             document.getElementById("secreto").innerHTML = segredo.join(" ");
 
-            
-
         }
+
         
         
     
+    }
+    if (acerto === false){
+        errado.push(letra1)
+        document.getElementById("errado").value = errado;
     }
     // document.getElementById("secreto").innerHTML = segredo.join(" ");
 
