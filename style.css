@@ -19,26 +19,18 @@ header{
     display: grid;
     flex-direction: row;
     grid-row: 1/2;
-    grid-template-columns: 50% 1fr;
+    grid-template-columns: 60% 1fr;
     padding: 10px;
-    background-color: #610A09;
-    
-
-
+    background-color: #610A09;    
 }
 
-header.Nome{
-    grid-column: 1/2;
-    display: flex;
-    justify-content: space-between;
-
-    
+header div.Vitoria{
+    grid-column: 2/3;    
+    display: flex; 
 }
 
-
-header.Vitoria{
-    grid-row:1/2;
-    grid-column: 2/3;
+header p {
+    margin-right: 50px;
 }
 
 main{
@@ -60,43 +52,33 @@ main div img {
 }
 
 span{
-    display: grid;
-    grid-row:3/4;
-    padding: 10px;
-    grid-template-columns: 60% 20% 1fr;
+    grid-row:3/4;    
+    display: flex;
+    justify-content: space-around;
     background-color: #E01915;
-    
+    align-items: center;    
 }
 
-
-span.traco{
+span div.categoria {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    grid-column: 1/2;
-
-
+    flex-direction: column;
 }
 
-
-span.categoria{
+span div.palavra {
     display: flex;
-    grid-column: 2/3;
+    flex-direction: column;
 }
 
-span.palavra{
-    display: flex;
-    grid-column: 3/4;
-    
+span div.palavra button {
+    width: 160px;
+    margin-top: 5px;
 }
-
 footer{
     display: grid;
     align-items: center;
     justify-content: space-evenly;
     justify-items: center;
-    background-color: #612726;
-    
+    background-color: #612726; 
 
 }
 
