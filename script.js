@@ -2,7 +2,7 @@ const dados01 = [];
 const letraadv01 = [];
 let segredo = [];
 let palavra = "";
-
+let chance = 6;
 
 function cadastrar() {
     // entrada:
@@ -59,9 +59,7 @@ function cadastrar() {
     }
     console.log(segredo.length)
     document.getElementById("secreto").innerHTML = segredo.join(" ");
-
-
-
+    
 
 
 
@@ -89,12 +87,12 @@ function letra01(letra1){
         }
 
         
-        
     
     }
     if (acerto === false){
         errado.push(letra1)
         document.getElementById("errado").value = errado;
+        chance -= 1;
     }
     // document.getElementById("secreto").innerHTML = segredo.join(" ");
 
