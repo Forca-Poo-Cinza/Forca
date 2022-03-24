@@ -1,0 +1,117 @@
+* {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    display: grid;
+    grid-template-rows: 15% 40% 13% 1fr;
+    color: white;
+ 
+
+}
+
+header{
+    display: grid;
+    flex-direction: row;
+    grid-row: 1/2;
+    grid-template-columns: 50% 1fr;
+    padding: 10px;
+    background-color: #610A09;
+    
+
+
+}
+
+header.Nome{
+    grid-column: 1/2;
+    display: flex;
+    justify-content: space-between;
+
+    
+}
+
+
+header.Vitoria{
+    grid-row:1/2;
+    grid-column: 2/3;
+}
+
+main{
+    display: flex;
+    grid-row: 2/3;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    background-color: #E65C5A;
+    
+}
+
+span{
+    display: grid;
+    grid-row:3/4;
+    padding: 10px;
+    grid-template-columns: 60% 20% 1fr;
+    background-color: #E01915;
+    
+}
+
+
+span.traco{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 1/2;
+
+}
+
+
+span.categoria{
+    display: flex;
+    grid-column: 2/3;
+}
+
+span.palavra{
+    display: flex;
+    grid-column: 3/4;
+    
+}
+
+footer{
+    display: grid;
+    align-items: center;
+    justify-content: space-evenly;
+    justify-items: center;
+    background-color: #612726;
+    
+
+}
+
+button {
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid #AD1210;
+    outline: none;
+    transition: 1s ease-in-out;
+  }
+
+  
+  button:hover {
+    transition: 1s ease-in-out;
+    background: #746262;
+  }
+  
+
+  
+  button{
+    color: white;
+    font-size: 18px;
+    font-weight: 100;
+  }
+
