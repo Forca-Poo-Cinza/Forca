@@ -2,9 +2,16 @@ const dados01 = [];
 const letraadv01 = [];
 let segredo = [];
 let palavra = "";
-let chance = 6;
+let chance = 0;
+let derrota = "";
+let vitoria = "";
+let img = document.getElementById("trocarimg");
 
 function cadastrar() {
+    chance = 6;
+    img.src = "Imagens/01.png"
+    segredo = [];
+    document.getElementById("secreto").innerHTML = segredo.join(" ");
     // entrada:
     
     const usuario = document.getElementById("usuario");
@@ -69,12 +76,9 @@ function cadastrar() {
 
     
 };
-let alfabeto = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-
 let errado = [];
 
-var num = 1;
-var img = document.getElementById("trocarimg");
+let comparar = "";
 
 function letra01(letra1){
     console.log(letra1);
@@ -87,8 +91,15 @@ function letra01(letra1){
             segredo[j] = letra1;
             console.log(segredo.join(" "))
             document.getElementById("secreto").innerHTML = segredo.join(" ");
+            comparar = segredo.find(element => element == "____");
+            if (comparar == undefined){
+                vitoria = vitoria + "I";
+                document.getElementById("vitoria").value = vitoria;
+                
+            }
 
         }
+
 
         
     
@@ -97,6 +108,7 @@ function letra01(letra1){
         errado.push(letra1)
         document.getElementById("errado").value = errado;
         chance -= 1;
+        console.log(chance)
     }
 
     if (chance!=6){
@@ -112,6 +124,10 @@ function letra01(letra1){
             img.src = "Imagens/06.png";
         } else {
             img.src = "Imagens/07.png"
+            document.getElementById("palavraSecreta").value = palavra;
+            derrota = derrota + " I "
+            document.getElementById("derrota").value = derrota;
+            
       }}
     //garante que num fique alternando entre 1 e 2
 

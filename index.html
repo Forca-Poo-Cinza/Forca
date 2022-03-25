@@ -18,23 +18,20 @@
             <label for="">Email:</label>
             <input id="email" type="text">
             <button onclick="cadastrar()">Confirmar</button>
-
     </div>
 
 
     <div class="Vitoria">
-        <p>Vitória:</p>
-        <p>Derrota:</p>
-    </div>
-
-    
+        <p>Vitorias: <span>0</span></p>
+        <p>Derrotas: <span>0</span></p>
+    </div>  
 
     </header>
 
     <main>
-
-        <img src="Imagens/01.png" alt="" id="trocarimg">
-
+        <div>
+        <img src="Imagens/00.png" alt="" id="trocarimg">
+        </div>
     </main>
 
     <span>
@@ -45,19 +42,17 @@
 
         <div class="categoria">
             <label>Dica: </label>
-            <input type="text" id="categoria"></input>
-            <br>
-            <br>
+            <input type="text" id="categoria"></input>           
             <label>Palavra secreta: </label>
-            <input type="text" id=""></input>
+            <input type="text" id="palavraSecreta"></input>
         </div>
         
 
         <div class="palavra">
             <label for=""> Errado:</label>
             <input id="errado"></input>
-
-
+            <button style=";" onclick="reset()">Jogar Novamente</button>
+            
         </div>
     </span>
 
