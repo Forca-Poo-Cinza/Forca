@@ -7,9 +7,10 @@ let derrota = "";
 let vitoria = "";
 let img = document.getElementById("trocarimg");
 
+
+
 function cadastrar() {
-    chance = 6;
-    img.src = "Imagens/01.png"
+    chance = 0;
     segredo = [];
     document.getElementById("secreto").innerHTML = segredo.join(" ");
     // entrada:
@@ -76,6 +77,7 @@ function cadastrar() {
 
     
 };
+
 let errado = [];
 
 let comparar = "";
@@ -83,6 +85,8 @@ let comparar = "";
 function letra01(letra1){
     console.log(letra1);
     let acerto = false;
+    
+
     for (let j = 0; j < palavra.length; j++){
 
         if(palavra[j] == letra1){
@@ -107,28 +111,21 @@ function letra01(letra1){
     if (acerto === false){
         errado.push(letra1)
         document.getElementById("errado").value = errado;
-        chance -= 1;
+        chance += 1;
         console.log(chance)
     }
+    if (chance != 0) {
+        document.getElementById("trocarimg").style.visibility = "visible"
+    }
 
-    if (chance!=6){
-        if (chance == 5){
-            img.src = "Imagens/02.png";
-        }else if (chance == 4){
-            img.src = "Imagens/03.png";
-        }else if (chance == 3){
-            img.src = "Imagens/04.png";
-        }else if (chance == 2){
-            img.src = "Imagens/05.png";
-        }else if (chance == 1){
-            img.src = "Imagens/06.png";
+    if (chance <= 6 && chance >= 1){
+        document.getElementById("trocarimg").src=`Imagens/0${chance}.png`;
         } else {
-            img.src = "Imagens/07.png"
-            document.getElementById("palavraSecreta").value = palavra;
-            derrota = derrota + " I "
-            document.getElementById("derrota").value = derrota;
-            
-      }}
+            document.getElementById("trocarimg").src=`Imagens/07.png`;   
+    }
+    
+    
+        
     //garante que num fique alternando entre 1 e 2
 
 
