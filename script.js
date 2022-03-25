@@ -1,30 +1,33 @@
 const dados01 = [];
 const letraadv01 = [];
+let errado = [];
 let segredo = [];
 let palavra = "";
 let chance = 0;
-let derrota = "";
-let vitoria = "";
+let derrota = 0;
+let vitoria = 0;
 let img = document.getElementById("trocarimg");
+let alfabeto = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z", "Ç"]
+
+
+class Pessoas {
+    constructor (nome, email){
+        this.nome = nome 
+        this.email = email
+    }
+}
 
 function cadastrar() {
-    chance = 6;
-    img.src = "Imagens/01.png"
-    segredo = [];
-    document.getElementById("secreto").innerHTML = segredo.join(" ");
     // entrada:
+    document.getElementById("vitoria").textContent = 0;
+    document.getElementById("derrota").textContent = 0;
+    derrota = 0;
+    vitoria = 0;
     
-    const usuario = document.getElementById("usuario");
-    const email = document.getElementById("email");    
-
-    //processamento:
-    const dados = {
-        usuario: usuario.value,
-        email: email.value
-    };
-
-    // console.log(dados);
-    dados01.push(dados);
+    user = document.getElementById("usuario").value;
+    mail = document.getElementById("email").value;
+    console.log(user, mail)
+    cadastrado = new Pessoas(user,mail)
 
     // saída:
 //    console.table(dados01);
@@ -32,6 +35,25 @@ function cadastrar() {
    // limpar a saída
     usuario.value= '';
     email.value = '';
+
+    reset();
+}
+
+function reset() {
+    document.getElementById("errado").value = "";
+    document.getElementById("palavraSecreta").value = ""; 
+    document.getElementById("trocarimg").style.visibility = "hidden";
+    chance = 0;
+    segredo = [];
+    palavra =[];
+    errado=[];
+
+    for (let index = 0; index < alfabeto.length; index++) {
+        let a = `btn${alfabeto[index]}`;
+        document.getElementById(a).style.backgroundColor = "#612726";
+        document.getElementById(a).style.opacity = "1";
+        document.getElementById(a).disabled = false;
+    }
 
     let categoria = ["Cor", "Animal", "Fruta"];
 
@@ -63,26 +85,18 @@ function cadastrar() {
 
     for (let i = 1; i <= palavra.length; i++){
         segredo.push("____")
-
     }
     console.log(segredo.length)
-    document.getElementById("secreto").innerHTML = segredo.join(" ");
-    
-
-
-
-
-
-
+    document.getElementById("secreto").innerHTML = segredo.join("  ");
     
 };
-let errado = [];
 
-let comparar = "";
+
 
 function letra01(letra1){
     console.log(letra1);
-    let acerto = false;
+    let acerto = false;    
+
     for (let j = 0; j < palavra.length; j++){
 
         if(palavra[j] == letra1){
@@ -92,211 +106,56 @@ function letra01(letra1){
             console.log(segredo.join(" "))
             document.getElementById("secreto").innerHTML = segredo.join(" ");
             comparar = segredo.find(element => element == "____");
+            console.log(comparar)
+            let a = `btn${letra1}`;
+            document.getElementById(a).style.backgroundColor = "black";
+            document.getElementById(a).style.opacity = "0.2";
+            document.getElementById(a).disabled = true;
             if (comparar == undefined){
-                vitoria = vitoria + "I";
-                document.getElementById("vitoria").value = vitoria;
-                
+                vitoria = vitoria + 1;
+                document.getElementById("vitoria").textContent = vitoria;
+                console.log(vitoria)                
             }
-
         }
-
-
-        
-    
     }
+    
     if (acerto === false){
         errado.push(letra1)
         document.getElementById("errado").value = errado;
-        chance -= 1;
-        console.log(chance)
+        chance += 1;
+        console.log(chance) 
+        let a = `btn${letra1}`;
+        document.getElementById(a).style.backgroundColor = "black";
+        document.getElementById(a).style.opacity = "0.2";
+        document.getElementById(a).disabled = true;
+
+    }
+    if (chance != 0) {
+        document.getElementById("trocarimg").style.visibility = "visible"
     }
 
-    if (chance!=6){
-        if (chance == 5){
-            img.src = "Imagens/02.png";
-        }else if (chance == 4){
-            img.src = "Imagens/03.png";
-        }else if (chance == 3){
-            img.src = "Imagens/04.png";
-        }else if (chance == 2){
-            img.src = "Imagens/05.png";
-        }else if (chance == 1){
-            img.src = "Imagens/06.png";
-        } else {
-            img.src = "Imagens/07.png"
-            document.getElementById("palavraSecreta").value = palavra;
-            derrota = derrota + " I "
-            document.getElementById("derrota").value = derrota;
+    if (chance <= 6 && chance >= 1){
+        document.getElementById("trocarimg").src=`Imagens/0${chance}.png`;
+        } else if (chance == 7) {
+            derrota = derrota + 1;
+            document.getElementById("derrota").textContent = derrota;
+            console.log(palavra)
+            document.getElementById("trocarimg").src=`Imagens/07.png`;
+            document.getElementById("palavraSecreta").value = palavra; 
             
-      }}
+            for (let index = 0; index < alfabeto.length; index++) {
+                let a = `btn${alfabeto[index]}`;
+                document.getElementById(a).style.backgroundColor = "black";
+                document.getElementById(a).style.opacity = "0.2";
+                document.getElementById(a).disabled = true;
+            }
+            
+        }      
+        
     //garante que num fique alternando entre 1 e 2
 
-
-
     console.log(chance)
-    // document.getElementById("secreto").innerHTML = segredo.join(" ");
-
-    // if (acerto == true){
-    //     segredo[j] = letra1
-    //     console.log("estive aqui");
-    //     console.log(segredo)
-    // } else {
-    //     document.getElementById("errado").value = letra1;
-    //     console.log("Estou na errada")
-    // }
-
-    
-
 }
 
 
 
-
-
-// let listaDinamica = [];
-// let palavraSecretaCategoria;
-
-
-// const palavras = [
-//     palavra001={
-//         nome : "ABACATE",
-//         categoria : "FRUTAS"
-//     },
-//     palavra002={
-//         nome : "MEXERICA",
-//         categoria : "FRUTAS"
-//     },
-//     palavra003={
-//         nome : "CAQUI",
-//         categoria : "FRUTAS"
-//     },
-//     palavra004={
-//         nome : "MANGA",
-//         categoria : "FRUTAS"
-//     },
-//     palavra005={
-//         nome : "AMEIXA",
-//         categoria : "FRUTAS"
-//     },
-//     palavra006={
-//         nome : "CEREJA",
-//         categoria : "FRUTAS"
-//     },
-//     palavra007={
-//         nome : "ABACAXI",
-//         categoria : "FRUTAS"
-//     },
-//     palavra008={
-//         nome : "LICHIA",
-//         categoria : "FRUTAS"
-//     },
-//     palavra009={
-//         nome : "ACEROLA",
-//         categoria : "FRUTAS"
-//     },
-//     palavra010={
-//         nome : "AÇAI",
-//         categoria : "FRUTAS"
-//     },
-//     palavra011={
-//         nome : "MIRTILO",
-//         categoria : "FRUTAS"
-//     },
-//     palavra012={
-//         nome : "LARANJA",
-//         categoria : "FRUTAS"
-//     },
-//     palavra013={
-//         nome : "FRAMBOESA",
-//         categoria : "FRUTAS"
-//     },
-//     palavra014={
-//         nome : "GOIABA",
-//         categoria : "FRUTAS"
-//     },
-//     palavra015={
-//         nome : "DAMASCO",
-//         categoria : "FRUTAS"
-//     },
-//     palavra016={
-//         nome : "GRAVIOLA",
-//         categoria : "FRUTAS"
-//     },
-//     palavra017={
-//         nome : "JABOTICABA",
-//         categoria : "FRUTAS"
-//     },
-//     palavra018={
-//         nome : "NECTARINA",
-//         categoria : "FRUTAS"
-//     },
-//     palavra019={
-//         nome : "CARAMBOLA",
-//         categoria : "FRUTAS"
-//     },
-//     palavra020={
-//         nome : "TAMARINDO",
-//         categoria : "FRUTAS"
-//     },
-// ];
-
-// criarPalavraSecreta();
-// function criarPalavraSecreta(){
-//     const indexPalavra = parseInt(Math.random() * palavras.length)
-    
-//     palavraSecretaSorteada = palavras[indexPalavra].nome;
-//     palavraSecretaCategoria = palavras[indexPalavra].categoria;
-//     console.log(palavraSecretaSorteada);
-//     console.log(palavraSecretaCategoria);
-// }
-
-// montarPalavraNaTela(); // aparece na tela a categoria e a palavra secreta. 
-// function montarPalavraNaTela(){
-//     const categoria = document.getElementById("categoria");
-//     categoria.innerHTML = palavraSecretaCategoria;
-
-//     const palavraTela = document.getElementById("palavra-secreta");
-//     palavraTela.innerHTML =" "; // apaguei a "palavraSecretaSorteada" para não aparecer mais na palavraSecretaSorteada 
-
-//     // para aparecer o espaço da forca:
-//     for (i = 0; i < palavraSecretaSorteada.length; i++) {
-//         if(listaDinamica[i] == undefined){
-//             listaDinamica[i] = "&nbsp;"
-//             palavraTela.innerHtml = palavraTela.innerHTML + "<div class='letras'>" + listaDinamica[i]+ "</div>"
-//             }
-//             else{
-//                 palavraTela.innerHtml = palavraTela.innerHTML + "<div class='letras'>" + listaDinamica[i]+ "</div>"
-//             }
-//     }           
-// }
-
-
-
-
-
-
-
-
-
-// let cores = ["ABÓBORA", "AÇAFRÃO", "AMARELO", "ÂMBAR", "AMEIXA", "AMÊNDOA", "AMETISTA", "ANIL", "AZUL", "BEGE", "BORDÔ", "BRANCO", "BRONZE", "CÁQUI", "CARAMELO", "CARMESIM", "CARMIM", "CASTANHO", "CEREJA", "CHOCOLATE", "CIANO", "CINZA", "CINZENTO", "COBRE", "CORAL", "CREME", "DAMASCO", "DOURADO", "ESCARLATE", "ESMERALDA", "FERRUGEM", "FÚCSIA", "GELO", "GRENÁ", "GRIS", "ÍNDIGO", "JADE", "JAMBO", "LARANJA", "LAVANDA", "LILÁS", "LIMÃO", "LOIRO", "MAGENTA", "MALVA", "MARFIM", "MARROM", "MOSTARDA", "NEGRO", "OCRE", "OLIVA", "OURO","PÊSSEGO", "PRATA", "PRETO", "PÚRPURA", "ROSA", "ROXO", "RUBRO", "SALMÃO", "SÉPIA", "TERRACOTA", "TIJOLO", "TURQUESA", "UVA", "VERDE", "VERMELHO", "VINHO", "VIOLETA"];
-
-// let segredo = "";
-
-
-// let teste = (Math.random()*((cores.length - 1))).toFixed(0);
-// let palavra = cores[teste]
-// console.log(palavra)
-
-
-
-// for (let i = 1; i <= palavra.length; i++){
-//     segredo = segredo + " _ "
-// }
-
-// console.log(segredo)
-
-// let alfabeto = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-
-// function forca(){
-    
-// }
