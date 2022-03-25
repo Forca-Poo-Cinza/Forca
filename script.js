@@ -114,7 +114,13 @@ function letra01(letra1){
             if (comparar == undefined){
                 vitoria = vitoria + 1;
                 document.getElementById("vitoria").textContent = vitoria;
-                console.log(vitoria)                
+                console.log(vitoria)
+                for (let index = 0; index < alfabeto.length; index++) {
+                    let a = `btn${alfabeto[index]}`;
+                    document.getElementById(a).style.backgroundColor = "black";
+                    document.getElementById(a).style.opacity = "0.2";
+                    document.getElementById(a).disabled = true;
+                }                
             }
         }
     }
