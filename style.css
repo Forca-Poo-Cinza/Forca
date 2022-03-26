@@ -21,7 +21,7 @@ header{
     grid-row: 1/2;
     grid-template-columns: 60% 1fr;
     padding: 10px;
-    background-color: #610A09;    
+    background-color: #7e7b7b;    
 }
 
 header div.Vitoria{
@@ -39,7 +39,7 @@ main{
     padding: 10px;
     justify-content: center;
     align-items: center;
-    background-color: #E65C5A;
+    background-color: #f8ecec;
     
 }
 
@@ -55,7 +55,7 @@ span{
     grid-row:3/4;    
     display: flex;
     justify-content: space-around;
-    background-color: #E01915;
+    background-color: #1e4353;
     align-items: center;    
 }
 
@@ -78,7 +78,7 @@ footer{
     align-items: center;
     justify-content: space-evenly;
     justify-items: center;
-    background-color: #612726; 
+    background-color: #413a3a; 
 
 }
 
@@ -87,7 +87,7 @@ button {
     height: 30px;
     cursor: pointer;
     background: transparent;
-    border: 1px solid #AD1210;
+    border: 1px solid #F4BC3B;
     outline: none;
     transition: 1s ease-in-out;
   }
@@ -105,4 +105,3 @@ button {
     font-size: 18px;
     font-weight: 100;
   }
-
