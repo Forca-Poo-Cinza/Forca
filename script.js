@@ -97,13 +97,14 @@ function letra01(letra1){
         if(palavra[j] == letra1){
             acerto = true;
             segredo[j] = letra1;
-            document.getElementById("secreto").innerHTML = segredo.join("");
+            document.getElementById("secreto").innerHTML = segredo.join(" ");
             comparar = segredo.find(element => element == "____");
             botaoUnico(letra1)
 
             if (comparar == undefined){
                 vitoria = vitoria + 1;
                 document.getElementById("vitoria").textContent = vitoria;
+                botaoTodos(808080, 0.2, true)
             }
         }
     }
@@ -126,9 +127,7 @@ function letra01(letra1){
         document.getElementById("derrota").textContent = derrota;
         document.getElementById("trocarimg").src=`Imagens/07.png`;
         document.getElementById("palavraSecreta").value = palavra; 
-            for (let index = 0; index < alfabeto.length; index++) {
-                botaoTodos(808080, 0.2, true)
-            }            
+        botaoTodos(808080, 0.2, true)            
         }
 }
 
