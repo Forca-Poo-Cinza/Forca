@@ -1,19 +1,23 @@
+
+// Separação das vaviáveis.
 let errado = [];
 let segredo = [];
 let palavra = "";
 let chance = 0;
 let derrota = 0;
 let vitoria = 0;
-
 let alfabeto = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z", "Ç"];
 
-
+// Definindo as categorias e as possiveis palavras com objeto.
 
 let categorias = {
     Catego: ["Cor", "Fruta", "Animal"],
     Cor: ["ABOBORA", "AÇAFRAO", "AMARELO", "AMBAR", "AMEIXA", "AMÊNDOA", "AMETISTA", "ANIL", "AZUL", "BEGE", "BORDÔ", "BRANCO", "BRONZE", "CAQUI", "CARAMELO", "CARMESIM", "CARMIM", "CASTANHO", "CEREJA", "CHOCOLATE", "CIANO", "CINZA", "CINZENTO", "COBRE", "CORAL", "CREME", "DAMASCO", "DOURADO", "ESCARLATE", "ESMERALDA", "FERRUGEM", "FÚCSIA", "GELO", "GRENÁ", "GRIS", "ÍNDIGO", "JADE", "JAMBO", "LARANJA", "LAVANDA", "LILÁS", "LIMAO", "LOIRO", "MAGENTA", "MALVA", "MARFIM", "MARROM", "MOSTARDA", "NEGRO", "OCRE", "OLIVA", "OURO","PÊSSEGO", "PRATA", "PRETO", "PÚRPURA", "ROSA", "ROXO", "RUBRO", "SALMÃO", "SÉPIA", "TERRACOTA", "TIJOLO", "TURQUESA", "UVA", "VERDE", "VERMELHO", "VINHO", "VIOLETA"],
     Fruta: ["ABACATE","ABACAXI","AÇAI","ACEROLA","AMEIXA","CAQUI","CARAMBOLA","CEREJA","DAMASCO","FRAMBOESA","GOIABA","GRAVIOLA","JABOTICABA","LARANJA","LICHIA","MANGA","MEXERICA","MIRTILO","NECTARINA","TAMARINDO"],
     Animal:["CAMALEAO", "CAPIVARA", "CAMELO", "TARTARUGA", "LEBRE", "GUAXINIM", "GIRAFA", "TUCANO", "OURIÇO", "CISNE", "SAGUI", "ORANGOTANGO", "HIPOPOTAMO", "HIENA", "GUEPARDO", "MOSCA", "MOSQUITO", "CAMARAO", "PACA", "RAPOSA", "BAIACU", "DRAGAO", "MARIPOSA", "UNICORNIO", "NARVAL", "OCAPI", "CEGONHA", "PELICANO", "LACRAIA", "LEMURE", "IGUANA", "CHINCHILA", "CACATUA", "PAVAO", "TARANTULA", "KOALA", "CANGURU", "CALOPSITA", "DINOSSAURO", "TIRANOSSAURO"],
+    
+    //Sorteio, tanto das palavras quanto das categorias.
+
     sorteio(){  
         random = Math.floor(Math.random() * categorias.Catego.length);  
         categoria = categorias.Catego[random];
@@ -42,6 +46,8 @@ class Pessoas {
     
 }
 
+// Botão para cadastrar o usuario, e, limpar o input do usuario, vitória e da derrota
+
 function cadastrar() {
     user = document.getElementById("usuario").value;
     mail = document.getElementById("email").value;
@@ -53,6 +59,8 @@ function cadastrar() {
     reset();
 }
 
+// Disabilitar os botões, caso o usuario digite para jogar novamente.
+
 function botaoTodos (a1,a2,a3 = false) {
     for (let index = 0; index < alfabeto.length; index++) {
     let a = `btn${alfabeto[index]}`
@@ -62,12 +70,16 @@ function botaoTodos (a1,a2,a3 = false) {
     }
 }
 
+// Função para quando o usuário clicar nas letras, possa desabilitar os botões
+
 function botaoUnico (b){
     let a = `btn${b}`;
         document.getElementById(a).style.backgroundColor = "black";
         document.getElementById(a).style.opacity = "0.2";
         document.getElementById(a).disabled = true;
 }
+
+//Função para o inicio do jogo, resetando as palavras, chance e a quantidade de erros, além de esconder a imagem. 
 
 function reset() {    
     document.getElementById("errado").value = "";
@@ -87,6 +99,8 @@ function reset() {
     }
     document.getElementById("secreto").innerHTML = segredo.join("  ");    
 };
+
+// As letras digitadas.
 
 function letra01(letra1){   
 
