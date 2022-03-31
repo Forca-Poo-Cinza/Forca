@@ -1,9 +1,11 @@
-let errado = [];
+let letrasErradas = [];
 let segredo = [];
 let palavra = "";
-let chance = 0;
+// Se for tirar a variavel chance como uma variavel global, colocar "chance" como parametro na função "LetraErrada"
+
 let derrota = 0;
 let vitoria = 0;
+
 
 let alfabeto = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z", "Ç"];
 
@@ -22,6 +24,13 @@ let categorias = {
         
         palavra = categorias[categoria][random]
         secreta = new Palavra(categoria, palavra)
+    }
+}
+
+class variaveisLocais{
+    constructor(chance){
+        this.chance = chance;
+
     }
 }
 
@@ -69,13 +78,14 @@ function botaoUnico (b){
         document.getElementById(a).disabled = true;
 }
 
-function reset() {    
-    document.getElementById("errado").value = "";
+function reset() {
+    variaveis = new variaveisLocais(0)
+    variaveis.chance = 0;
+    document.getElementById("letrasErradas").value = "";
     document.getElementById("palavraSecreta").value = ""; 
     document.getElementById("trocarimg").style.visibility = "hidden";
-    chance = 0;
     segredo = [];
-    errado=[];    
+    letrasErradas=[];    
     
     botaoTodos(612726, 1, false)
     categorias.sorteio()
@@ -88,18 +98,21 @@ function reset() {
     document.getElementById("secreto").innerHTML = segredo.join("  ");    
 };
 
-function letra01(letra1){   
+function verificarLetra(letraEscolhida){   
 
-    let acerto = false;    
+    let acerto = false;
+    
+
+       
 
     for (let j = 0; j < palavra.length; j++){
 
-        if(palavra[j] == letra1){
+        if(palavra[j] == letraEscolhida){
             acerto = true;
-            segredo[j] = letra1;
+            segredo[j] = letraEscolhida;
             document.getElementById("secreto").innerHTML = segredo.join(" ");
             comparar = segredo.find(element => element == "____");
-            botaoUnico(letra1)
+            botaoUnico(letraEscolhida)
 
             if (comparar == undefined){
                 vitoria = vitoria + 1;
@@ -108,21 +121,33 @@ function letra01(letra1){
             }
         }
     }
-    
-    if (acerto === false){
-        errado.push(letra1)
-        document.getElementById("errado").value = errado;
-        chance += 1;
-        botaoUnico(letra1);
-    }
 
-    if (chance != 0) {
+    Errado(acerto,letraEscolhida)
+    
+
+}
+
+function Errado(verificacaoDaLetra, letraEscolhida){
+    if (verificacaoDaLetra === false){
+        letrasErradas.push(letraEscolhida)
+        document.getElementById("letrasErradas").value = letrasErradas;
+        variaveis.chance += 1;
+        botaoUnico(letraEscolhida);
+    }
+    letraErrada();
+
+    
+
+}
+
+function letraErrada(){
+    if (variaveis.chance != 0) {
         document.getElementById("trocarimg").style.visibility = "visible"
     }
 
-    if (chance >= 1 && chance <= 6){
-        document.getElementById("trocarimg").src=`Imagens/0${chance}.png`;
-    } else if (chance == 7) {
+    if (variaveis.chance >= 1 && variaveis.chance <= 6){
+        document.getElementById("trocarimg").src=`Imagens/0${variaveis.chance}.png`;
+    } else if (variaveis.chance == 7) {
         derrota = derrota + 1;
         document.getElementById("derrota").textContent = derrota;
         document.getElementById("trocarimg").src=`Imagens/07.png`;
