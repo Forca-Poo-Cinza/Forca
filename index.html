@@ -17,7 +17,7 @@
             <br>
             <label for="">Email:</label>
             <input id="email" type="text">
-            <button onclick="cadastrar()">Confirmar</button>
+            <button onclick="window.jogo.cadastrar()">Confirmar</button>
     </div>
 
 
@@ -36,7 +36,6 @@
 
     <span>
         <div class="traco">
-
             <p id="secreto"></p>
         </div>
 
@@ -51,48 +50,60 @@
         <div class="palavra">
             <label for=""> Errado:</label>
             <input id="errado"></input>
-            <button onclick="reset()">Jogar Novamente</button>
+            <button onclick="window.jogo.reset()">Jogar Novamente</button>
             
         </div>
     </span>
 
     <footer>
         <p>
-            <button value="Q" onclick="letra01('Q')" id="btnQ">Q</button> 
-            <button value="W" onclick="letra01('W')" id="btnW">W</button>
-            <button value="E" onclick="letra01('E')" id="btnE">E</button>
-            <button value="R" onclick="letra01('R')" id="btnR">R</button>
-            <button value="T" onclick="letra01('T')" id="btnT">T</button>
-            <button value="Y" onclick="letra01('Y')" id="btnY">Y</button>
-            <button value="U" onclick="letra01('U')" id="btnU">U</button>
-            <button value="I" onclick="letra01('I')" id="btnI">I</button>
-            <button value="O" onclick="letra01('O')" id="btnO">O</button>
-            <button value="P" onclick="letra01('P')" id="btnP">P</button>
+            <button value="W" onclick="window.jogo.init('W')" id="btnW">W</button>
+            <button value="E" onclick="window.jogo.init('E')" id="btnE">E</button>
+            <button value="R" onclick="window.jogo.init('R')" id="btnR">R</button>
+            <button value="T" onclick="window.jogo.init('T')" id="btnT">T</button>
+            <button value="Y" onclick="window.jogo.init('Y')" id="btnY">Y</button>
+            <button value="Q" onclick="window.jogo.init('Q')" id="btnQ">Q</button> 
+            <button value="U" onclick="window.jogo.init('U')" id="btnU">U</button>
+            <button value="I" onclick="window.jogo.init('I')" id="btnI">I</button>
+            <button value="O" onclick="window.jogo.init('O')" id="btnO">O</button>
+            <button value="P" onclick="window.jogo.init('P')" id="btnP">P</button>
         </p>
-        <p> <button value="A" onclick="letra01('A')" id="btnA">A</button>
-            <button value="S" onclick="letra01('S')" id="btnS">S</button>
-            <button value="D" onclick="letra01('D')" id="btnD">D</button>
-            <button value="F" onclick="letra01('F')" id="btnF">F</button>
-            <button value="G" onclick="letra01('G')" id="btnG">G</button>
-            <button value="H" onclick="letra01('H')" id="btnH">H</button>
-            <button value="J" onclick="letra01('J')" id="btnJ">J</button>
-            <button value="K" onclick="letra01('K')" id="btnK">K</button>
-            <button value="L" onclick="letra01('L')" id="btnL">L</button>
-            <button value="Ç" onclick="letra01('Ç')" id="btnÇ">Ç</button>
+        <p> <button value="A" onclick="window.jogo.init('A')" id="btnA">A</button>
+            <button value="S" onclick="window.jogo.init('S')" id="btnS">S</button>
+            <button value="D" onclick="window.jogo.init('D')" id="btnD">D</button>
+            <button value="F" onclick="window.jogo.init('F')" id="btnF">F</button>
+            <button value="G" onclick="window.jogo.init('G')" id="btnG">G</button>
+            <button value="H" onclick="window.jogo.init('H')" id="btnH">H</button>
+            <button value="J" onclick="window.jogo.init('J')" id="btnJ">J</button>
+            <button value="K" onclick="window.jogo.init('K')" id="btnK">K</button>
+            <button value="L" onclick="window.jogo.init('L')" id="btnL">L</button>
+            <button value="Ç" onclick="window.jogo.init('Ç')" id="btnÇ">Ç</button>
         </p>
         <p>
-            <button value="Z" onclick="letra01('Z')" id="btnZ">Z</button>
-            <button value="X" onclick="letra01('X')" id="btnX">X</button>
-            <button value="C" onclick="letra01('C')" id="btnC">C</button>
-            <button value="V" onclick="letra01('V')" id="btnV">V</button>
-            <button value="B" onclick="letra01('B')" id="btnB">B</button>
-            <button value="N" onclick="letra01('N')" id="btnN">N</button>
-            <button value="M" onclick="letra01('M')" id="btnM">M</button>
+            <button value="Z" onclick="window.jogo.init('Z')" id="btnZ">Z</button>
+            <button value="X" onclick="window.jogo.init('X')" id="btnX">X</button>
+            <button value="C" onclick="window.jogo.init('C')" id="btnC">C</button>
+            <button value="V" onclick="window.jogo.init('V')" id="btnV">V</button>
+            <button value="B" onclick="window.jogo.init('B')" id="btnB">B</button>
+            <button value="N" onclick="window.jogo.init('N')" id="btnN">N</button>
+            <button value="M" onclick="window.jogo.init('M')" id="btnM">M</button>
         </p>
     </footer>
 
 
     
-    <script src="script.js"></script>
+    <script type="module" src="./jogodaforca.js" ></script>
+    <script type="module" src="./methods/cadastrar.js"></script>
+    <script type="module" src="./methods/init.js"></script>
+    <script type="module" src="./methods/reset.js"></script>
+    <script type="module" src="./methods/compararletras.js"></script>
+    <script type="module" src="./methods/botaounico.js"></script>
+    <script type="module" src="./methods/botaotodos.js"></script>
+    <script type="module" src="./methods/testvitoria.js"></script>
+    <script type="module" src="./methods/html_setters.js"></script>    
+    <script type="module" src="./methods/sorteio.js"></script>    
+    <script type="module" src="./classes/palavra.js"></script>    
+    <script type="module" src="./classes/pessoas.js"></script>
+    
 </body>
 </html>
