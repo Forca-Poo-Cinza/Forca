@@ -1,15 +1,17 @@
-// Variavel global
-
-let errado = [];
+let letrasErradas = [];
 let segredo = [];
 let palavra = "";
-let chance = 0;
-let acerto = false; 
+// Se for tirar a variavel chance como uma variavel global, colocar "chance" como parametro na função "LetraErrada"
 
-const alfabeto = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z", "Ç"];
+let derrota = 0;
+let vitoria = 0;
 
 
-const categorias = {
+let alfabeto = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z", "Ç"];
+
+
+
+let categorias = {
     Catego: ["Cor", "Fruta", "Animal"],
     Cor: ["ABOBORA", "AÇAFRAO", "AMARELO", "AMBAR", "AMEIXA", "AMÊNDOA", "AMETISTA", "ANIL", "AZUL", "BEGE", "BORDÔ", "BRANCO", "BRONZE", "CAQUI", "CARAMELO", "CARMESIM", "CARMIM", "CASTANHO", "CEREJA", "CHOCOLATE", "CIANO", "CINZA", "CINZENTO", "COBRE", "CORAL", "CREME", "DAMASCO", "DOURADO", "ESCARLATE", "ESMERALDA", "FERRUGEM", "FÚCSIA", "GELO", "GRENÁ", "GRIS", "ÍNDIGO", "JADE", "JAMBO", "LARANJA", "LAVANDA", "LILÁS", "LIMAO", "LOIRO", "MAGENTA", "MALVA", "MARFIM", "MARROM", "MOSTARDA", "NEGRO", "OCRE", "OLIVA", "OURO","PÊSSEGO", "PRATA", "PRETO", "PÚRPURA", "ROSA", "ROXO", "RUBRO", "SALMÃO", "SÉPIA", "TERRACOTA", "TIJOLO", "TURQUESA", "UVA", "VERDE", "VERMELHO", "VINHO", "VIOLETA"],
     Fruta: ["ABACATE","ABACAXI","AÇAI","ACEROLA","AMEIXA","CAQUI","CARAMBOLA","CEREJA","DAMASCO","FRAMBOESA","GOIABA","GRAVIOLA","JABOTICABA","LARANJA","LICHIA","MANGA","MEXERICA","MIRTILO","NECTARINA","TAMARINDO"],
@@ -18,9 +20,9 @@ const categorias = {
         random = Math.floor(Math.random() * categorias.Catego.length);  
         categoria = categorias.Catego[random];
 
-        random2 = Math.floor(Math.random() * categorias[categoria].length)
+        random = Math.floor(Math.random() * categorias[categoria].length)
         
-        palavra = categorias[categoria][random2]
+        palavra = categorias[categoria][random]
         secreta = new Palavra(categoria, palavra)
     }
 }
@@ -40,123 +42,92 @@ class Palavra {
 }
 
 class Pessoas {
-    #vitoria
-    #derrota
     constructor (nome, email, vitoria = 0, derrota = 0){
         this.nome = nome 
         this.email = email
-        this.#vitoria = vitoria 
-        this.#derrota = derrota  
-    } 
-    set addVitoria (x) {
-        this.#vitoria += x
-    }
-    get showVitoria () {
-        return this.#vitoria
-    }
-    set addDerrota (x) {
-        this.#derrota += x
-    }
-    get showDerrota () {
-        return this.#derrota
-    }    
+        this.vitoria = vitoria 
+        this.derrota = derrota
 }
-
-
-
-const htmlVitoria = () => {
-    document.getElementById("vitoria").textContent = cadastro01.showVitoria;
-}
-
-const htmlDerrota = () => {
-    document.getElementById("derrota").textContent = 
-    cadastro01.showDerrota;
-}
-
 function cadastrar() {
-    user = document.getElementById("usuario").value;
-    mail = document.getElementById("email").value;
-    cadastro01 = new Pessoas(user,mail)
-    usuario.value= '';
-    email.value = '';    
-    htmlVitoria();
-    htmlDerrota();
-    reset();
-}
+            user = document.getElementById("usuario").value;
+            mail = document.getElementById("email").value;
+            cadastro01 = new Pessoas(user,mail)
+            usuario.value= '';
+            email.value = '';  
+            reset(); 
+        
+}   
+// Desabilitar os botões, caso o usuario digite para jogar novamente.
 
-function botaoTodos (a1,a2,a3 = false) {
+function habilitarBotoes(cor,opacidade,habilitar = false) {
     for (let index = 0; index < alfabeto.length; index++) {
     let a = `btn${alfabeto[index]}`
-    document.getElementById(a).style.backgroundColor = `#${a1}`;
-    document.getElementById(a).style.opacity = `${a2}`;
-    document.getElementById(a).disabled = a3;
+    document.getElementById(a).style.backgroundColor = `#${cor}`;
+    document.getElementById(a).style.opacity = `${opacidade}`;
+    document.getElementById(a).disabled = habilitar;
     }
 }
 
-function botaoUnico (b){
+// Função para quando o usuário clicar nas letras, possa desabilitar os botões
+
+function bloquearTecla (b){
     let a = `btn${b}`;
         document.getElementById(a).style.backgroundColor = "black";
         document.getElementById(a).style.opacity = "0.2";
         document.getElementById(a).disabled = true;
 }
+// nova função
+function desenharTraco (tamanhoPalavra){
+    for (let i = 1; i <= tamanhoPalavra; i++){
+        segredo.push("____")
+    }
+    document.getElementById("secreto").innerHTML = segredo.join("  "); 
+};
 
-function reset() {
-    variaveis = new variaveisLocais(0)
-    variaveis.chance = 0;
-    document.getElementById("letrasErradas").value = "";
+function reset() {    
+    document.getElementById("errado").value = "";
     document.getElementById("palavraSecreta").value = ""; 
     document.getElementById("trocarimg").style.visibility = "hidden";
+    chance = 0;
     segredo = [];
-    letrasErradas=[];    
+    errado=[];    
     
-    botaoTodos(612726, 1, false)
+    habilitarBotoes(746262, 1, false)
     categorias.sorteio()
+    document.getElementById("categoria").value = secreta.categoria;
+    desenharTraco(palavra.length)
+    // Nova função desenharTraco    
+};
     
     document.getElementById("categoria").value = secreta.categoria;
 
     for (let i = 1; i <= palavra.length; i++){
         segredo.push("____")
     }
-    joinHTMl()    
+    document.getElementById("secreto").innerHTML = segredo.join("  ");    
 };
+function verificarLetra(letraEscolhida){   
 
-const joinHTMl = () => {
-    document.getElementById("secreto").innerHTML = segredo.join(" ");
-}
-
-const compararLetras = (letra) => {
-    let comparador = 0
-    for (comparador = 0; comparador < palavra.length; comparador++){
-        if(palavra[comparador] == letra){
-            acerto = true;
-            segredo[comparador] = letra;
-            joinHTMl()
-            testeVitoria(); 
-            botaoUnico(letra)
-        }
-    }        
-}
-
-const testeVitoria = () => {
-    comparar = segredo.find(element => element == "____");
-    if (comparar == undefined){
-        cadastro01.addVitoria = 1 
-        htmlVitoria();
-        botaoTodos(808080, 0.2, true)
-    }
-}
-
-function letra01(letra){
-
-    acerto = false;  
-
-        compararLetras(letra);     
+    let acerto = false;
     
-    if (acerto === false){
-        errado.push(letra)
-        document.getElementById("errado").value = errado;
-        chance += 1;
-        botaoUnico(letra);
+
+       
+
+    for (let j = 0; j < palavra.length; j++){
+
+        if(palavra[j] == letraEscolhida){
+            acerto = true;
+            segredo[j] = letraEscolhida;
+            document.getElementById("secreto").innerHTML = segredo.join(" ");
+            comparar = segredo.find(element => element == "____");
+            botaoUnico(letraEscolhida)
+
+            if (comparar == undefined){
+                vitoria = vitoria + 1;
+                document.getElementById("vitoria").textContent = vitoria;
+                botaoTodos(808080, 0.2, true)
+            }
+        }
     }
 
     Errado(acerto,letraEscolhida)
@@ -182,11 +153,11 @@ function letraErrada(){
         document.getElementById("trocarimg").style.visibility = "visible"
     }
 
-    if (chance >= 1 && chance <= 6){
-        document.getElementById("trocarimg").src=`Imagens/0${chance}.png`;
-    } else if (chance == 7) {
-        cadastro01.addDerrota = 1
-        document.getElementById("derrota").textContent = cadastro01.showDerrota;
+    if (variaveis.chance >= 1 && variaveis.chance <= 6){
+        document.getElementById("trocarimg").src=`Imagens/0${variaveis.chance}.png`;
+    } else if (variaveis.chance == 7) {
+        derrota = derrota + 1;
+        document.getElementById("derrota").textContent = derrota;
         document.getElementById("trocarimg").src=`Imagens/07.png`;
         document.getElementById("palavraSecreta").value = palavra; 
         botaoTodos(808080, 0.2, true)            
